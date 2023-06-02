@@ -1,0 +1,38 @@
+<div class="row justify-content-center mt-3">
+    <div class="d-flex justify-content-center">
+        <button type="button" routerLink="/home/nueva-oferta" class="btn btn-primary btn-lg">Añadir nueva oferta</button>
+    </div>
+</div>
+<div class="row mt-3">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">ID</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Email</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Salario</th>
+                <th scope="col">Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let oferta of this.ofertasArray">
+                <th scope="row">{{oferta.id}}</th>
+                <td>{{oferta.titulo}}</td>
+                <td>{{oferta.descripcion}}</td>
+                <td>{{oferta.email}}</td>
+                <td>{{oferta.empresa}}</td>
+                <td>{{oferta.ciudad}}</td>
+                <td>{{oferta.salario}}</td>
+                <td>
+                    <tr>
+                        <td><a class="btn btn-success mr-2" (click)="this.goToOfertaDetail(oferta.id)">Ver</a></td>
+                        <td><a class="btn btn-danger" (click)="this.OfertaDelete(oferta.id)">Eliminar</a></td>
+                    </tr>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

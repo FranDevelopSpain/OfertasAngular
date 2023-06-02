@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+.header {
+    margin-left: 16px;
+}
+
+.login {
+    margin-right: 16px;
+}
+
+.fa {
+    width: 20px!important;
+    font-size: 1.2em;
+}
+
+.error {
+    color: rgb(209, 23, 23);
+}
+
+.button {
+    margin-right: 16px
+}

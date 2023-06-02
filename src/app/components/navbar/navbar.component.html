@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+        <div class="navbar-header navbar-collapse collapse header">
+            <a class="navbar-brand" routerLink="/home">Portal de empleo</a>
+        </div>
+        <div class="navbar-collapse collapse d-flex flex-row-reverse login" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/home']">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="hayUsuario()" [routerLink]="['/home/ofertas-admin']">Ofertas</a>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0 button" *ngIf="!hayUsuario()" [routerLink]="['/login']">Login</button>
+            <button type="button" class="btn btn-outline-danger my-2 my-sm-0 button" *ngIf="hayUsuario()" (click)="logout()" [routerLink]="['/login']">Logout</button>
+        </form>
+    </nav>
+</div>

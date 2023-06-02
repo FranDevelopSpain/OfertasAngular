@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col divcenter">
+            <div>
+                <h2>NUEVA OFERTA DE TRABAJO</h2>
+            </div>
+            <p>
+                Rellene este formulario para crear la nueva oferta de empleo, recuerde completar adecuadamente los campos. Gracias por confiar en nosotros! 😄
+            </p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <form class="row g-4" (ngSubmit)="onSubmit()" role="form" [formGroup]="ofertaForm">
+                <div class="alert alert-warning" *ngIf="!ofertaForm.valid">Revise todos los campos, puesto que son obligatorios.</div>
+                <div class="alert alert-info" *ngIf="ofertaForm.valid">Todos los campos son correctos, puede enviar el formulario de registro, gracias.
+                </div>
+                <div class="col-12">
+                    <div class="col input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-plus"></i></span>
+                        <input type="text" name="titulo" formControlName="titulo" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.titulo.errors}" placeholder="Titulo de la oferta*" aria-describedby="basic-addon1" required />
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.titulo.errors?.required">Tienes que rellenar este campo</div>
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.titulo.errors?.minLength">La longitud mínima son 10 caracteres</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col input-group">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-building"></i></span>
+                        <input type="text " name="empresa" formControlName="empresa" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.empresa.errors}" placeholder="Empresa interesada*" aria-describedby="basic-addon2" required />
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.empresa.errors?.required">Tienes que rellenar este campo</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-envelope"></i></span>
+                        <input type="email" name="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.email.errors}" placeholder="Email de la empresa*" aria-describedby="basic-addon3" required />
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.descripcion.errors?.required">Tienes que rellenar este campo</div>
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.email.errors?.email">El email debe ser válido</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3 "><i class="fa fa-map-marker"></i></span>
+                        <input type="text" name="ciudad" formControlName="ciudad" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.ciudad.errors}" placeholder="Ciudad donde se encuentra*" required />
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.ciudad.errors?.required">Tienes que rellenar este campo</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-euro"></i></span>
+                        <input type="number" name="salario" formControlName="salario" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.salario.errors}" placeholder="Salario estimado*" />
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.salario.errors?.required">Tienes que rellenar este campo</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon4 "><i class="fa fa-address-card-o"></i></span>
+                        <textarea name="descripcion" formControlName="descripcion" class="form-control" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.descripcion.errors}" placeholder="Describa el puesto de trabajo para el que busca nuevos candidatos*" aria-describedby="basic-addon4"
+                            rows="3"></textarea>
+                        <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.descripcion.errors?.required">Tienes que rellenar este campo</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" name="checkbox" formControlName="checkbox" type="checkbox" id="flexSwitchCheckDefault" [ngClass]="{'is-invalid': this.sending && this.ofertaForm.controls.checkbox.errors}">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Acepto las
+                                <a href="#" class="link-primary">condiciones del servicio</a>
+                                ofrecido por EmpleoNg.</label>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="sending && this.ofertaForm.controls.checkbox.errors?.required">Debes aceptar las condiciones del servicio</div>
+                    <div>Controles: {{this.ofertaForm.controls.checkbox.errors?.required | json}}</div>
+                </div>
+                <div class="col-12 text-center">
+                    <button [disabled]="isLoading" type="submit" class="btn btn-success p-2 btn-block">
+                        <span class="spinner-border spinner-border-sm mr-1" *ngIf="isLoading"></span>
+                        Registrar oferta
+                      </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br /><br />
